@@ -1,0 +1,23 @@
+Create table Store (id integer primary key, name TEXT, color Text, Price INTEGER, quantity INTEGER); 
+
+Insert into store (name, color, price, quantity) Values ("shirt", "red", 10, 20);
+Insert into store (name, color, price, quantity)Values ("shirt", "green", 10, 20);
+Insert into store (name, color, price, quantity) values ("pants", "blue", 25, 10);
+Insert into store (name, color, price, quantity) VAlues ("Cargo pants", "black", 25, 10);
+Insert into store (name, color, price, quantity) values ("knitted shirt","grey", 15, 10);
+Insert into store (name, color, price, quantity) values ("nike hat", "black", 15, 25);
+Insert into store (name, color, price, quantity) Values ("shorts", "green", 11, 30);
+Insert into store (name, color, price, quantity) values ("shorts", "blue", 14, 12);
+Insert into store (name, color, price, quantity) values ("shirt", "yellow", 13.99, 24);
+Insert into store (name, color, price, quantity) Values ("jeans", "light blue", 40, 50);
+Insert into store (name, color, price, quantity) values ("jeans", "black", 40, 50);
+Insert into store (name, color, price, quantity) Values ("jeans", "Dark blue", 40, 50);
+Insert into store (name, color, price, quantity) Values ("tank top", "black", 5, 20);
+Insert into store (name, color, price, quantity) Values ("tank top", "white", 5, 20);
+Insert into store (name, color, price, quantity) Values ("hat", "cream", 20, 15);
+Insert into store (name, color, price, quantity)
+values ("jacket", "black", 50, 20);
+
+Select * from store where price <20 order by price desc;
+
+Select sum (price) from store order by quantity desc;
