@@ -18,6 +18,8 @@ Insert into store (name, color, price, quantity) Values ("hat", "cream", 20, 15)
 Insert into store (name, color, price, quantity)
 values ("jacket", "black", 50, 20);
 
+-What items in the store are under 20 dollars in order by descending prices?
 Select * from store where price <20 order by price desc;
 
+-what is the sum of the total prices?
 Select sum (price) from store order by quantity desc;
