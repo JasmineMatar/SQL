@@ -1,0 +1,34 @@
+/* Create table about the people and what they do here */
+
+Create table singers (id integer primary key, name text, age integer);
+
+insert into singers (name, age) values ("the weeknd", 33);
+insert into singers (name, age) values ("dua lipa", 27);
+insert into singers (name, age) values ("britney spears", 41);
+insert into singers (name, age) values ("bruno mars", 37);
+insert into singers (name, age) values ("ariana grande", 30");
+insert into singers (name, age) values ("quavo", 32);
+insert into singers (name, age) values ("jack harlow", 25);
+insert into singers (name, age) values ("50 cent", 48);
+insert into singers (name, age) values ("snoop dogg", 51);
+
+
+Create table songs (id integer primary key, name text, song_title text, genre text);
+
+insert into songs (name, song_title, genre) values ("the weeknd", "sidewalks", "RandB");
+
+insert into songs (name, song_title, genre) values ("dua_lipa", "levatating", "pop");
+
+insert into songs (name, song_title, genre) values ("britney spears", "toxic", "pop");
+
+insert into songs (name, song_title, genre) values ("bruno mars", "chunky", "pop");
+
+insert into songs (name, song_title, genre) values ("ariana grande", "break up with your girlfriend", "pop");
+
+insert into songs (name, song_title, genre) values ("quavo", "hotel lobby", "rap");
+
+insert into songs (name, song_title, genre) values ("jack harlow", "first class", "rap");
+
+insert into songs (name, song_title, genre) values ("50 cent", "in da club", "hip hop");
+
+insert into songs (name, song_title, genre) values ("snoop dogg", "drop it like its hot", "hip hop");
