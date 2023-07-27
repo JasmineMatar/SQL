@@ -1,34 +1,62 @@
 /* Create table about the people and what they do here */
+/* Create table about the people and what they do here */
 
-Create table singers (id integer primary key, name text, age integer);
+Create table singers (id integer primary key autoincrement, name text, age integer);
 
 insert into singers (name, age) values ("the weeknd", 33);
 insert into singers (name, age) values ("dua lipa", 27);
 insert into singers (name, age) values ("britney spears", 41);
 insert into singers (name, age) values ("bruno mars", 37);
-insert into singers (name, age) values ("ariana grande", 30");
+insert into singers (name, age) values ("ariana grande", 30);
 insert into singers (name, age) values ("quavo", 32);
 insert into singers (name, age) values ("jack harlow", 25);
 insert into singers (name, age) values ("50 cent", 48);
 insert into singers (name, age) values ("snoop dogg", 51);
 
 
-Create table songs (id integer primary key, name text, song_title text, genre text);
+Create table songs (id integer primary key autoincrement, name text, song_title text, genre text, song_id integer);
 
-insert into songs (name, song_title, genre) values ("the weeknd", "sidewalks", "RandB");
+insert into songs (name, song_title, genre, song_id) values ("the weeknd", "sidewalks", "RandB", 1);
 
-insert into songs (name, song_title, genre) values ("dua_lipa", "levatating", "pop");
+insert into songs (name, song_title, genre, song_id) values ("dua_lipa", "levatating", "pop", 2);
 
-insert into songs (name, song_title, genre) values ("britney spears", "toxic", "pop");
+insert into songs (name, song_title, genre, song_id) values ("britney spears", "toxic", "pop", 3);
 
-insert into songs (name, song_title, genre) values ("bruno mars", "chunky", "pop");
+insert into songs (name, song_title, genre, song_id ) values ("bruno mars", "chunky", "pop",4);
 
-insert into songs (name, song_title, genre) values ("ariana grande", "break up with your girlfriend", "pop");
+insert into songs (name, song_title, genre, song_id) values ("ariana grande", "break up with your girlfriend", "pop", 5);
 
-insert into songs (name, song_title, genre) values ("quavo", "hotel lobby", "rap");
+insert into songs (name, song_title, genre, song_id) values ("quavo", "hotel lobby", "rap", 6);
 
-insert into songs (name, song_title, genre) values ("jack harlow", "first class", "rap");
+insert into songs (name, song_title, genre, song_id) values ("jack harlow", "first class", "rap", 7);
 
-insert into songs (name, song_title, genre) values ("50 cent", "in da club", "hip hop");
+insert into songs (name, song_title, genre,song_id) values ("50 cent", "in da club", "hip hop", 8);
 
-insert into songs (name, song_title, genre) values ("snoop dogg", "drop it like its hot", "hip hop");
+insert into songs (name, song_title, genre, song_id) values ("snoop dogg", "drop it like its hot", "hip hop", 9);
+
+
+select singers.name, songs.song_title
+from singers
+join songs
+on singers.id = songs.song_id;
+
+select singers.name, songs.genre, singers.age
+from singers
+join songs
+on singers.id = songs.song_id
+order by age asc;
+
+select name from singers 
+where age <30;
+
+select name, song_title, genre from songs 
+where genre ="pop";
+
+select singers.name, songs.genre, singers.age
+from singers
+join songs
+on singers.id = songs.song_id
+where genre="hip hop"
+order by age desc;
+
+
