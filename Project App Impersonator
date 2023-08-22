@@ -1,0 +1,23 @@
+# I created a table of customers in an app that tracks notes.
+
+CREATE TABLE customers (id INTEGER PRIMARY KEY, name TEXT, age INTEGER, weight REAL, notes text);
+
+INSERT INTO customers VALUES (1, "Brian", 36, 173, "I am feeling terrible today but I am still going to work out." );
+
+INSERT INTO customers VALUES (2, "Jess", 33, 135, "I am getting up to workout I am going to do 2 workouts today.") ;
+
+INSERT INTO customers VALUES (3, "Ron", 39, 155, "I am feeling motivated to workout today in the moring.");
+
+select age 
+from customers;
+
+# I updated a customers age. 
+UPDATE customers SET age = 55 WHERE id = 3; 
+
+select age from customers;
+
+#I deleted a customer from the table. 
+DELETE FROM customers WHERE id = 3;
+
+Select * 
+from customers
