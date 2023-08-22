@@ -1,0 +1,114 @@
+Select firstname, lastname, customerid, country
+from chinook.customers
+where country <> 'USA';
+
+
+select firstname, lastname, customerid, country
+from chinook.customers
+where country = 'Brazil';
+
+select c.firstname, i.invoiceid, billingcountry, i.invoicedate
+from chinook.customers as c
+left join chinook.invoices as i
+on c.customerid= i.invoiceid
+where i.billingcountry = 'Brazil';
+
+select employeeid, firstname, lastname, title
+from chinook.employees
+where title= 'Sales Support Agent';
+
+select distinct (billingcountry)
+from chinook.invoices;
+
+select emp.firstname, emp.lastname, i.invoiceid, emp.title
+from chinook.employees as emp
+join chinook.customers as c
+on emp.employeeid = c.SupportRepId
+join chinook.invoices as i 
+on c.customerid = i.invoiceid
+where emp.title = 'Sales Support Agent';
+
+select  i.total, c.firstname, c.lastname, c.country,
+emp.firstname, emp.lastname
+from chinook.employees as emp
+join chinook.customers as c
+on emp.employeeid = c.SupportRepId
+join chinook.invoices as i 
+on c.customerid = i.invoiceid;
+
+select count(*)
+from chinook.invoices
+where invoicedate like '%2009%';
+
+select sum(total)
+from chinook.invoices
+where invoicedate like '%2009%';
+
+select t.name, i.invoiceid, i.invoicelineid
+from chinook.tracks as t
+left join chinook.invoice_items as i 
+on t.trackid = i.trackid;
+
+select art.name as artist_name, t.name as track_name, i.invoicelineid
+from chinook.tracks as t
+join chinook.invoice_items as i
+on t.trackid = i.trackid
+join chinook.albums as alb
+on t.albumid = alb.albumid
+join chinook.artists as art
+on alb.artistid = art.artistid
+order by artist_name;
+
+
+SELECT ar.name as Artist, t.Name as Track, i.InvoiceLineId
+FROM chinook.Invoice_items i
+LEFT JOIN chinook.tracks t 
+ON i.TrackID=t.TrackID
+INNER JOIN chinook.albums a
+ON a.AlbumID=t.AlbumID
+LEFT JOIN chinook.artists ar
+ON ar.ArtistID=a.ArtistID;
+
+SELECT t.Name AS 'Track Name', a.Title AS 'Album Title', m.Name AS 'Media Type', g.Name AS 'Genre'
+FROM chinook.tracks t
+JOIN chinook.Albums a 
+on a.AlbumId = t.AlbumId
+JOIN chinook.Media_Types m
+on m.MediaTypeId = t.MediaTypeId
+JOIN chinook.Genres g
+on g.GenreId = t.GenreId;
+
+
+select e.EmployeeId, e.LastName, e.FirstName,
+round(sum(i.total), 2) as 'total sales'
+from chinook.employees as e
+join chinook.customers as c
+on c.supportrepid = e.employeeid
+join chinook.invoices as i 
+on  i.customerid = c.customerid
+where e.title= 'Sales Support Agent'
+group by e.firstname;
+
+select e.firstname, e.lastname, i.invoicedate, 
+round(sum(i.total), 2) as 'Total Sales'
+from chinook.employees e 
+join chinook.customers c
+on e.employeeid = c.supportrepid
+join chinook.invoices i
+on c.customerid= i.customerid
+where e.title = 'Sales Support Agent'
+and i.invoicedate like '2009%'
+group by e.firstname
+order by (round(sum(i.total), 2)) desc limit 1;
+
+Select firstname, lastname, customerid, country
+from chinook.customers
+where country = 'USA'
+limit 5;
+
+select employeeid, firstname, lastname, title
+from chinook.employees
+where title <> 'Sales Support Agent';
+
+select employeeid, firstname, lastname, title
+from chinook.employees;
