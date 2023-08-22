@@ -1,25 +1,32 @@
+# I answered questions about the data. I also came up with questions and answered the questions. 
+
+#Show Customers (their full names, customer ID, and country) who are not in the US.
 Select firstname, lastname, customerid, country
 from chinook.customers
 where country <> 'USA';
 
-
+#Show only the Customers from Brazil.
 select firstname, lastname, customerid, country
 from chinook.customers
 where country = 'Brazil';
 
+#Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
 select c.firstname, i.invoiceid, billingcountry, i.invoicedate
 from chinook.customers as c
 left join chinook.invoices as i
 on c.customerid= i.invoiceid
 where i.billingcountry = 'Brazil';
 
+#Show the Employees who are Sales Agents.
 select employeeid, firstname, lastname, title
 from chinook.employees
 where title= 'Sales Support Agent';
 
+#Find a unique/distinct list of billing countries from the Invoice table
 select distinct (billingcountry)
 from chinook.invoices;
 
+#Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
 select emp.firstname, emp.lastname, i.invoiceid, emp.title
 from chinook.employees as emp
 join chinook.customers as c
@@ -28,6 +35,7 @@ join chinook.invoices as i
 on c.customerid = i.invoiceid
 where emp.title = 'Sales Support Agent';
 
+#Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
 select  i.total, c.firstname, c.lastname, c.country,
 emp.firstname, emp.lastname
 from chinook.employees as emp
@@ -36,19 +44,23 @@ on emp.employeeid = c.SupportRepId
 join chinook.invoices as i 
 on c.customerid = i.invoiceid;
 
+#How many Invoices were there in 2009?
 select count(*)
 from chinook.invoices
 where invoicedate like '%2009%';
 
+#What are the total sales for 2009?
 select sum(total)
 from chinook.invoices
 where invoicedate like '%2009%';
 
+#Write a query that includes the purchased track name with each invoice line ID.
 select t.name, i.invoiceid, i.invoicelineid
 from chinook.tracks as t
 left join chinook.invoice_items as i 
 on t.trackid = i.trackid;
 
+#Write a query that includes the purchased track name AND artist name with each invoice line ID.
 select art.name as artist_name, t.name as track_name, i.invoicelineid
 from chinook.tracks as t
 join chinook.invoice_items as i
@@ -59,7 +71,7 @@ join chinook.artists as art
 on alb.artistid = art.artistid
 order by artist_name;
 
-
+#Write a query that includes the purchased track name AND artist name with each invoice line ID.
 SELECT ar.name as Artist, t.Name as Track, i.InvoiceLineId
 FROM chinook.Invoice_items i
 LEFT JOIN chinook.tracks t 
@@ -69,6 +81,7 @@ ON a.AlbumID=t.AlbumID
 LEFT JOIN chinook.artists ar
 ON ar.ArtistID=a.ArtistID;
 
+#Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
 SELECT t.Name AS 'Track Name', a.Title AS 'Album Title', m.Name AS 'Media Type', g.Name AS 'Genre'
 FROM chinook.tracks t
 JOIN chinook.Albums a 
@@ -78,7 +91,7 @@ on m.MediaTypeId = t.MediaTypeId
 JOIN chinook.Genres g
 on g.GenreId = t.GenreId;
 
-
+#Show the total sales made by each sales agent.
 select e.EmployeeId, e.LastName, e.FirstName,
 round(sum(i.total), 2) as 'total sales'
 from chinook.employees as e
@@ -89,6 +102,7 @@ on  i.customerid = c.customerid
 where e.title= 'Sales Support Agent'
 group by e.firstname;
 
+#Which sales agent made the most dollars in sales in 2009?
 select e.firstname, e.lastname, i.invoicedate, 
 round(sum(i.total), 2) as 'Total Sales'
 from chinook.employees e 
@@ -101,14 +115,17 @@ and i.invoicedate like '2009%'
 group by e.firstname
 order by (round(sum(i.total), 2)) desc limit 1;
 
+#Show the customers full name who purchased in the USA.
 Select firstname, lastname, customerid, country
 from chinook.customers
 where country = 'USA'
 limit 5;
 
+# What are the employees that are not Sales Agent?
 select employeeid, firstname, lastname, title
 from chinook.employees
 where title <> 'Sales Support Agent';
 
+# what are the names and titles of the employees?
 select employeeid, firstname, lastname, title
 from chinook.employees;
