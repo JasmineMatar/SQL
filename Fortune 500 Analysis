@@ -1,0 +1,36 @@
+Select*
+from fortune_companies;
+
+-- 1. What is the average of employees for compnaies that are in the technology industry? --
+
+select industry, avg(employees)
+from fortune_companies 
+where industry = "Technology";
+
+-- 2. What is the sum of the revenue for each copmany that has a total revenue of at least 350? 
+
+select company_name, industry, sum(revenue) as sum_revenue
+from fortune_companies
+group by industry 
+having sum_revenue >= 350;
+
+--3. Create a column for each company that has employees that have a average tenure of 6 years to be labeled as 1, and if it is less than 6 years then it will be labeled as 0.--
+
+SELECT company_name, avg_employee_tenure,
+CASE WHEN avg_employee_tenure > 6 THEN 1 ELSE 0
+END as "Tenure over 6 years"
+FROM fortune_companies;
+
+--4. What are the companies that have maternity leave with 12 weeks or more, or 20 paid time off days with 20 or more?--
+
+select company_name, maternity_leave_weeks as maternity
+from fortune_companies
+where maternity >=12 
+or paid_time_off_days >= 20;
+
+
+--5. What companies have healthcare benefits and where the paid time off days are greater than or equal to 20 days?--
+select company_name, healthcare_benefits
+from fortune_companies
+where healthcare_benefits =1 
+and paid_time_off_days >=20;
